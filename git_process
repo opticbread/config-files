@@ -1,6 +1,0 @@
-init
-add
-commit -m "ex"
-remote add origin https
-remote -v
-push origin master
