@@ -1,0 +1,2 @@
+sudo mount.exfat-fuse /dev/sdb1 /media/portable_media
+sudo umount /dev/sdb1
