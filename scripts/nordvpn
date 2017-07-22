@@ -1,0 +1,23 @@
+#sudo openvpn --auth-user-path auth  --daemon --config <file>
+
+#!/bin/sh
+# This is some secure program that uses security.
+
+echo "Pre-config servers:"
+echo "-nl 47 tcp"
+echo "-us 139 tcp"
+
+echo -n "Enter the 2 character country code (help):"
+read countryCode
+echo -n "Enter server number:"
+read serverNumber
+echo -n "Enter tcp or udp:"
+read protocol
+
+if [ $countryCode == "help" ]; then
+	ls /etc/openvpn/*nordvpn*
+elif [ $protocol == "tcp" ]; then
+	sudo openvpn --auth-user-pass /etc/openvpn/auth --daemon --config /etc/openvpn/$countryCode$serverNumber.nordvpn.com.tcp443.ovpn
+elif [ $protocol == "udp" ]; then
+	sudo openvpn --auth-user-pass /etc/openvpn/auth --daemon --config /etc/openvpn/$countryCode$serverNumber.nordvpn.com.tcp1194.ovpn
+fi
